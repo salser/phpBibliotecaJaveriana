@@ -89,7 +89,7 @@ if (isset($_POST['register_username']) && isset($_POST['register_email']) && iss
 		$_SESSION['set_cookies'] = true;
 		$_SESSION['db_inserted'] = true;
 
-		header("Location: " . WWW . "/security_check");
+		header("Location: " . WWW . "/security_check.php");
 		exit;
 	}
 }
