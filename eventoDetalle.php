@@ -6,6 +6,7 @@ if(isset($_GET['id']) && isset($_GET['email']) && isset($_GET['idU'])){
 	$subscribe_query = dbquery("INSERT INTO eventosxusuario (idEvento, idUser, mail)
 	 VALUES
 	  ('".$_GET['id']."','".$_GET['idU']."','".$_GET['email']."')");
+	sendMail($_GET['email'], "Biblioteca", "Seregistro correctamente en el evento", "Seregistro correctamente en el evento");
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	// TODO acabar actualización salas
