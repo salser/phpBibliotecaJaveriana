@@ -19,6 +19,7 @@ error_reporting(E_ALL);
 require_once INCLUDES . "class.core.php";
 require_once INCLUDES . "class.db.mysql.php";
 require_once INCLUDES . "class.users.php";
+require_once INCLUDES . "mail.php";
 
 $core = new uberCore();
 $users = new uberUsers();
@@ -63,6 +64,7 @@ else
 }
 
 $core->CheckCookies();
+checkCron();
 
 function dbquery($strQuery = '')
 {
@@ -107,41 +109,7 @@ function clean($strInput = '', $ignoreHtml = false, $nl2br = false, $encoding = 
 	return $strInput;
 }
 
-function timeAgo($timestamp, $minute = "minuto", $hour = "hora", $day = "d&iacute;a", $week = "semana", $seconds = "segundos", $minutes = "minutos", $hours = "horas", $days = "d&iacute;as", $weeks = "semanas")
-{
-	$difference = time() - $timestamp - 18000;
-	if ($difference < 60)
-		return "$difference $seconds";
-	else
-	{
-		$difference = round($difference / 60);
-		if ($difference < 60)
-		{
-			if ($difference == 1) return "$difference $minute";
-			else return "$difference $minutes";
-		}
-		else
-			$difference = round($difference / 60);
+function checkCron() {
 
-		if ($difference < 24)
-		{
-			if ($difference == 1) return "$difference $hour";
-			else return "$difference $hours";
-		}
-		else
-			$difference = round($difference / 24);
-
-		if ($difference < 7)
-		{
-			if ($difference == 1) return "$difference $day";
-			else return "$difference $days";
-		}
-		else
-		{
-			$difference = round($difference / 7);
-			if ($difference == 1) return "$difference $week";
-			else return "$difference $weeks";
-		}
-	}
 }
 ?>

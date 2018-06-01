@@ -42,14 +42,8 @@ include("inc/templates/subheader.php");
 
 			<section class="right_column me">
 				<section class="info_box radio_box centered">
-					<div class="info_title">Salas disponibles</div>
 					<br>
-
-					<br>
-
-					<div id="radio_info" class="small_text">
-						<i class="fa fa-circle-o-notch fa-spin"></i>
-					</div>
+					<img src="web-gallery/images/puj.png">
 
 				</section>
 			</section>
