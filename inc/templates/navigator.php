@@ -5,6 +5,7 @@ $pages = array(
   "Eventos" => "eventos",
   "Salas" => "salas",
   "Equipos" => "equipos",
+  "Libros" => "libros",
 );
 
  ?><nav>
@@ -25,7 +26,7 @@ $pages = array(
        ?>
        <li class="rightside logout"><a href="/logout.php">Salir</a></li>
        <?php if (LOGGED_IN && $myrow["rank"]>'1'): ?>
-       <li class="rightside"><a href="/manage">Administrar</a></li>
+       <li class="rightside"><a>Administrador</a></li>
      <?php endif; ?>
     </ul>
   </section>
