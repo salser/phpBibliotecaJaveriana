@@ -1,5 +1,5 @@
 <?php
-define('PAGE_ID', "equipos");
+define('PAGE_ID', "salas");
 require_once "global.php";
 
 $page_title = "Inn - Equipo Administrativo";
