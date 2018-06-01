@@ -352,7 +352,7 @@ nav li a:hover, nav li a.selected
 	float: none;
 }
 
-.input_box input[type="text"], .input_box input[type="password"], .input_box input[type="submit"]
+.input_box input[type="text"], .input_box input[type="password"], .input_box input[type="submit"], .input_box input[type="number"]
 {
 	font-family: inherit;
 	color:inherit;
@@ -364,7 +364,7 @@ nav li a:hover, nav li a.selected
 	border: 1px solid #efefef;
 	border-radius: 5px;
 }
-.input_box.register input[type="text"], .input_box.register input[type="password"]
+.input_box.register input[type="text"], .input_box.register input[type="password"], .input_box.register input[type="number"]
 {
 	display: block;
 	background-color: #ffffff;

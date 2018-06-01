@@ -26,7 +26,7 @@ $equipos_query = dbquery("SELECT * FROM equipos ORDER BY id");
 							<div class="title clear">
 								Buscar equipos:
 							</div>
-							<form>
+							<form action="resultados.php" method="get">
 								<input placeholder="Buscar" name="buscar" type="text" style="float: left;">
 								<div style="float: left;">&nbsp;&nbsp;</div>
 								<input type="submit" value="Buscar" style="float: left;">
@@ -41,14 +41,14 @@ $equipos_query = dbquery("SELECT * FROM equipos ORDER BY id");
 							while ($equipo = $equipos_query->fetch_assoc()) {
 							 ?>
 							<tr>
-								<td><img src="/web-gallery/assets/<?=$equipo["imagen"];?>" width="200"></td>
+								<td><img src="./web-gallery/assets/<?=$equipo["imagen"];?>" width="200"></td>
 								<td>
 									<strong><?=$equipo["nombre"];?></strong>
 									<br>
 									Disponibles: <?=$equipo["disponibles"];?>
 									<br>
 									<?php if ($equipo["disponibles"] > 0) { ?>
-									<a href="/equipos.php?pedir=<?=$equipo["id"];?>">Solicitar</a>
+									<a href="./equipos.php?pedir=<?=$equipo["id"];?>">Solicitar</a>
 									<?php } else { ?>
 										<div>No hay unidades</div>
 									<?php } ?>
@@ -60,6 +60,17 @@ $equipos_query = dbquery("SELECT * FROM equipos ORDER BY id");
 
 						<div class="clear"></div>
 					</div>
+
+
+						<br>
+						<?php
+							if ($myrow["rank"] == 2) {
+								echo "hello admin";
+							}
+						 ?>
+							<a href="./insertar.php">Insertar equipos</a>
+						<div class="clear"></div>
+
 				</div>
 
 			</section>
