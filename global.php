@@ -18,7 +18,6 @@ error_reporting(E_ALL);
 // Initialize core classes
 require_once INCLUDES . "class.core.php";
 require_once INCLUDES . "class.db.mysql.php";
-//require_once INCLUDES . "class.tpl.php";
 require_once INCLUDES . "class.users.php";
 
 $core = new uberCore();
@@ -30,9 +29,6 @@ $users = new uberUsers();
 $core->ParseConfig();
 $db = new MySQL($core->config['MySQL']['hostname'], $core->config['MySQL']['username'],	$core->config['MySQL']['password'], $core->config['MySQL']['database']);
 $db->Connect();
-
-define('HABBO_IMAGER', $core->config['Site']['habbo_avatar_imager']);
-define('BADGE_IMAGER', $core->config['Site']['habbo_badge_imager']);
 
 // ############################################################################
 // Session handling
@@ -61,7 +57,7 @@ if (isset($_SESSION['UBER_USER_E']) && isset($_SESSION['UBER_USER_H']))
 else
 {
 	define('LOGGED_IN', false);
-	define('USER_NAME', '¡Únete!');
+	define('USER_NAME', '');
 	define('USER_ID', -1);
 	define('USER_HASH', null);
 }
