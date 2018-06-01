@@ -93,10 +93,10 @@ $libros_solicitudes_query = dbquery("SELECT libros_solicitudes.id, username, tit
 	  						<input type="text" name="libro_name" disabled value="<?php echo $solicitud["titulo"] ;?>">
 								<br>
 								Tiempo préstamo
-	  						<input type="number" name="tiempo_prestamo"> Horas
+	  						<input type="number" name="tiempo_prestamo" value="2"> <select name="tiempo_prestamo_unidad"><option value="Minutos">Minutos</option><option value="Horas">Horas</option></select>
 								<br>
 								Reporte cada
-	  						<input type="number" name="reporte_cada"> Días
+	  						<input type="number" name="reporte_cada" value="5"> <select name="reporte_cada_unidad"><option value="Minutos">Minutos</option><option value="Horas">Horas</option></select>
 								<br>
 
 								<input type="submit" value="Aceptar">

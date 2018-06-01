@@ -2,16 +2,12 @@
 // ############################################################################
 // Prepare the local environment
 define('UBER', true);
-define('DS', DIRECTORY_SEPARATOR);
-define('LB', chr(13));
-define('CWD', dirname(__FILE__) . DS);
-define('INCLUDES', CWD . 'inc' . DS);
-define('SITE_NAME', "Showcard");
+define('INCLUDES', dirname(__FILE__) . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR);
 
 date_default_timezone_set('America/Bogota');
 setlocale(LC_TIME, "Spanish_Colombia");
 
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 @session_start();
 
 // ############################################################################
@@ -110,6 +106,11 @@ function clean($strInput = '', $ignoreHtml = false, $nl2br = false, $encoding = 
 }
 
 function checkCron() {
-
+	$toSend = dbquery("SELECT libros_solicitudes.id, username, titulo, mail, tiempo FROM libros_solicitudes JOIN libros ON (libroid = libros.id) JOIN users ON (users.id = userid) WHERE aprobado = '1' AND lastemail_timestamp + reportecada < " . time());
+	while ($data = $toSend->fetch_assoc()) {
+		$text = "Hola, " . $data["username"] .". Le recordamos que tiene que entregar " . $data["titulo"] . " el día " . strftime("%B %d de %Y a las %I:%M %p", $data["tiempo"]);
+		sendMail($data["mail"], "Biblioteca", "Recordatorio biblioteca", $text);
+		dbquery("UPDATE libros_solicitudes SET lastemail_timestamp = " . time() . " WHERE id = " . $data["id"]);
+	}
 }
 ?>

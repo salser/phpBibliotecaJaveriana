@@ -84,6 +84,8 @@ if (isset($_POST['register_username']) && isset($_POST['register_email']) && iss
 		dbquery("INSERT INTO users (username, password, mail, rank) VALUES
 		('" . $reg_username . "','" . $core->UberHash($reg_password) . "','".$register_email."','1')");
 
+		sendMail($register_email, "Biblioteca", "Registro correcto", "Registro correcto, bienvenido a la biblioteca");
+
 		$_SESSION['UBER_USER_E'] = $reg_username;
 		$_SESSION['UBER_USER_H'] = $core->UberHash($reg_password);
 		$_SESSION['set_cookies'] = true;
