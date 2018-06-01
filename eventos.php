@@ -67,6 +67,33 @@ $eventos_query = dbquery("SELECT * FROM eventos ORDER BY id");
 							</tr>
 							<?php } ?>
 						</table>
+						<?php 
+							if ($myrow["rank"] == "2") {
+								echo '<a class="btn" href="eventoDetalle.php?id='.$evento['id'].'&eliminar=true">Agregar</a>';
+								?>
+								<form>
+									<form action="POST">
+									<label for="nombre" >Nombre</label>
+							 		<br>
+									<input type="text" name="nombre" id="nombre">
+									<br>
+									<label for="lugar" >Lugar</label>
+									<br>
+									<input type="text" name="lugar" id="lugar" >">
+									<br>
+									<label for="inicio">Fecha Inicio</label>
+									<br>
+									<input type="datetime-local" name="inicio" id="inicio" value="">
+									<br>
+									<label for="fin">Fecha fin</label>
+									<br>
+									<input type="datetime-local" name="fin" id="fin">
+									<br>
+									<input type="submit" name="Actualizar"><input type="submit" value="Agregar">
+								</form>
+						  <?php
+							}
+						  ?>
 
 
 						<div class="clear"></div>

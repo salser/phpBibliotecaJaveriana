@@ -7,22 +7,25 @@ if(isset($_GET['id']) && isset($_GET['email']) && isset($_GET['idU'])){
 	 VALUES
 	  ('".$_GET['id']."','".$_GET['idU']."','".$_GET['email']."')");
 }
-// TODO acabar actualización salas
-// if(isset($_POST['id'] && isset($_POST['nombre']) && isset($_POST['lugar']) ) ){
-// 	if(isset($_POST['inicioChange']) && isset($_POST['finChange']) && isset($_POST['inicio']) && isset($_POST['fin'])){
-// 		$nombre = $_POST['nombre'];
-// 		$lugar = $_POST['lugar'];
-// 		$fInicio = $_POST['inicio'];
-// 		$fFin = $_POST['fin'];
-// 		dbquery("UPDATE eventos SET nombre='".$nombre."', lugar='".$lugar."',fechaInicio='".$fInicio."',fechaFin='".$fFin."' WHERE id=".$_POST['id']);
-// 	} else if ((isset($_POST['inicioChange']) && !isset($_POST['finChange']) && isset($_POST['inicio'])) {
-// 		//dbquery("UPDATE eventos SET nombre='".$nombre."', lugar='".$lugar."',fechaInicio='".$fInicio."'WHERE id=".$_POST['id']);
-// 	} else if ((!isset($_POST['inicioChange']) && isset($_POST['finChange']) && isset($_POST['fin'])){
-// 		dbquery("UPDATE eventos SET nombre='".$nombre."', lugar='".$lugar."',fechaFin='".$fFin."'WHERE id=".$_POST['id']);
-// 	} else {
-// 		dbquery("UPDATE eventos SET nombre='".$nombre."', lugar='".$lugar."' WHERE id=".$_POST['id']);
-// 	}
-// }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	// TODO acabar actualización salas
+	if(isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['lugar'])  ){
+		if(isset($_POST['inicioChange']) && isset($_POST['finChange']) && isset($_POST['inicio']) && isset($_POST['fin'])){
+			$nombre = $_POST['nombre'];
+			$lugar = $_POST['lugar'];
+			$fInicio = $_POST['inicio'];
+			$fFin = $_POST['fin'];
+			dbquery("UPDATE eventos SET nombre='".$nombre."', lugar='".$lugar."',fechaInicio='".$fInicio."',fechaFin='".$fFin."' WHERE id=".$_POST['id']);
+		} else if (isset($_POST['inicioChange']) && !isset($_POST['finChange']) && isset($_POST['inicio'])) {
+			dbquery("UPDATE eventos SET nombre='".$nombre."', lugar='".$lugar."',fechaInicio='".$fInicio."'WHERE id=".$_POST['id']);
+		} else if (!isset($_POST['inicioChange']) && isset($_POST['finChange']) && isset($_POST['fin'])){
+			dbquery("UPDATE eventos SET nombre='".$nombre."', lugar='".$lugar."',fechaFin='".$fFin."'WHERE id=".$_POST['id']);
+		} else {
+			dbquery("UPDATE eventos SET nombre='".$nombre."', lugar='".$lugar."' WHERE id=".$_POST['id']);
+		}
+	}	
+}
+
 
 $id = null;
 if(isset($_GET['id'])){
