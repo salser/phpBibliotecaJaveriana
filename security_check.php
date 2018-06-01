@@ -16,7 +16,7 @@ if (isset($_SESSION['set_cookies']) && $_SESSION['set_cookies'] === true)
 	unset($_SESSION['set_cookies']);
 }
 
-$redirMode = WWW . '/me';
+$redirMode = WWW . '/me.php';
 
 if (isset($_SESSION['page-redirect']))
 {

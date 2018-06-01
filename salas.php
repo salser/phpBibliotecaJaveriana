@@ -1,14 +1,14 @@
 <?php
-define('PAGE_ID', "staff");
+define('PAGE_ID', "equipos");
 require_once "global.php";
 
 $page_title = "Inn - Equipo Administrativo";
 
-$staffs_query = dbquery("SELECT users.id, users.username, users.motto, users.rank, users.last_online, users.online, users.look, users_badges.badge_code, inn_ranks.name as rank_name, inn_ranks.side, inn_ranks.color FROM users JOIN inn_ranks ON (users.rank = inn_ranks.id) LEFT JOIN users_badges ON (users.id = users_badges.user_id AND slot_id > 0) ORDER BY rank DESC, id ASC");
+//$staffs_query = dbquery("SELECT users.id, users.username, users.motto, users.rank, users.last_online, users.online, users.look, users_badges.badge_code, inn_ranks.name as rank_name, inn_ranks.side, inn_ranks.color FROM users JOIN inn_ranks ON (users.rank = inn_ranks.id) LEFT JOIN users_badges ON (users.id = users_badges.user_id AND slot_id > 0) ORDER BY rank DESC, id ASC");
 $last_rank_name = "";
 $last_user_name = "";
 $last_side = "l";
-$staffs_available = mysqli_num_rows($staffs_query) > 0;
+$staffs_available = 0;
 
 $rankOpened = false;
 $userOpened = false;

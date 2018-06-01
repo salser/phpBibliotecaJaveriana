@@ -116,7 +116,7 @@ if (isset($_POST['register_username']) && isset($_POST['register_email']) && iss
 
 					<?php if (strlen($register_errors) > 0) echo '<br>' . $register_errors; ?>
 
-					<form action="/register" method="post">
+					<form method="post">
 						<section class="input_box register">
 							<div class="title clear">
 								Nombre de usuario:
@@ -163,7 +163,8 @@ if (isset($_POST['register_username']) && isset($_POST['register_email']) && iss
 				<section class="info_box">
 					<div class="info_title blue">Biblioteca</div>
 					<center>
-						<img src="/web-gallery/images/hcbookshelves.gif">
+						<br>
+						<img src="/web-gallery/images/puj.png">
 					</center>
 					<center>
 						Bienvenido a la biblioteca

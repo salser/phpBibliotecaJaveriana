@@ -4,7 +4,7 @@ require_once "global.php";
 
 if (LOGGED_IN)
 {
-	header("Location: " . WWW . "/me");
+	header("Location: " . WWW . "/me.php");
 	exit;
 }
 
@@ -50,7 +50,7 @@ if (isset($_POST['credentials_username']) && isset($_POST['credentials_password'
 				$_SESSION['set_cookies'] = true;
 			}
 
-			header("Location: " . WWW . "/security_check");
+			header("Location: " . WWW . "/security_check.php");
 			exit;
 		}
 		else
@@ -99,7 +99,7 @@ include("inc/templates/subheader.php");
 
 			<section class="info_box">
 				<div class="info_left_image">
-					<img src="/web-gallery/images/bookshelf.png">
+					<img src="/web-gallery/images/puj.png" width="150">
 				</div>
 
 				<div class="info_text">
@@ -109,7 +109,7 @@ include("inc/templates/subheader.php");
 					<br>
 					Si no te has registrado, puedes hacerlo haciendo click en el siguiente botón.
 
-					<a href="/register">
+					<a href="/register.php">
 						<button class="register_button">
 							¡Regístrate!
 						</button>

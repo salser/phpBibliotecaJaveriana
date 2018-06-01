@@ -1,5 +1,4 @@
 <?php
-//Based on uberCMS (2010), by Roy 'Meth0d'.
 class uberCore
 {
 	public $execStart;
@@ -33,7 +32,7 @@ class uberCore
 
 	public static function SystemError($title, $text)
 	{
-		echo "<h2>ERROR</h2> \n <!-- \n $title \n\n  $text \n -->";
+		echo "<h2>ERROR</h2> \n  \n $title: \n\n  $text \n";
 		exit;
 	}
 
@@ -42,24 +41,6 @@ class uberCore
 		return $input;
 		//return base64_encode($input);
 		//return sha1($input . $this->config['Site']['hash_secret']);
-	}
-
-	public function GenerateTicket()
-	{
-		$data = "ST-";
-
-		for ($i=1; $i<=6; $i++){
-			$data = $data . rand(0,9);
-		}
-
-		$data = $data . "-";
-
-		for ($i=1; $i<=15; $i++){
-			$data = $data . chr(rand(97,122));
-		}
-
-		$data = $data . "-inn-beta-fe-";
-		return $data;
 	}
 
 	public static function GetIP()
@@ -89,7 +70,7 @@ class uberCore
 				$_SESSION['UBER_USER_H'] = $token;
 				$_SESSION['set_cookies'] = true; // renew cookies
 
-				header("Location: " . WWW . "/security_check");
+				header("Location: " . WWW . "/security_check.php");
 				exit;
 			}
 		}

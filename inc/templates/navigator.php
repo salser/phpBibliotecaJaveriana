@@ -2,8 +2,9 @@
 if (!defined("UBER")) exit;
 $pages = array(
   "Inicio" => "me",
-  "Eventos" => "events",
-  "Salas" => "rooms"
+  "Eventos" => "eventos",
+  "Salas" => "salas",
+  "Equipos" => "equipos",
 );
 
  ?><nav>
@@ -17,12 +18,12 @@ $pages = array(
         {
           echo 'class="selected" ';
         }
-        echo "href=\"/$link\">";
+        echo "href=\"/$link.php\">";
         echo $page;
         echo '</a></li>';
       }
        ?>
-       <li class="rightside logout"><a href="/logout">Salir</a></li>
+       <li class="rightside logout"><a href="/logout.php">Salir</a></li>
        <?php if (LOGGED_IN && $myrow["rank"]>'1'): ?>
        <li class="rightside"><a href="/manage">Administrar</a></li>
      <?php endif; ?>

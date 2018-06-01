@@ -60,7 +60,7 @@ header
 	width: 270px;
 	height:70px;
 	top: 12px;
-	background: url(../images/biblioteca.png) left top no-repeat;
+	background: url(../images/biblioteca_plain.png) left top no-repeat;
 }
 #logo a {
 	width: 270px;
@@ -204,8 +204,8 @@ nav li a:hover, nav li a.selected
 
 .info_box.user
 {
-	background-image: url(../images/jungle.png);
-	background-position: -825px -290px;
+	background-image: url(../images/biblio2.jpg);
+	background-position: 0px -80px;
 	height: 210px;
 	padding: 0;
 	color: #ffffff;
@@ -336,7 +336,7 @@ nav li a:hover, nav li a.selected
 	color: #ffffff;
 	font-size: 1.2em;
 }
-.index .input_box
+ .input_box
 {
 	float: left;
 	position: relative;
@@ -346,13 +346,13 @@ nav li a:hover, nav li a.selected
 	font-size: 0.9em;
 }
 
-.index .input_box.register
+.input_box.register
 {
 	color: #000000;
 	float: none;
 }
 
-.index .input_box input[type="text"], .index .input_box input[type="password"], .index .input_box input[type="submit"]
+.input_box input[type="text"], .input_box input[type="password"], .input_box input[type="submit"]
 {
 	font-family: inherit;
 	color:inherit;
@@ -364,40 +364,40 @@ nav li a:hover, nav li a.selected
 	border: 1px solid #efefef;
 	border-radius: 5px;
 }
-.index .input_box.register input[type="text"], .index .input_box.register input[type="password"]
+.input_box.register input[type="text"], .input_box.register input[type="password"]
 {
 	display: block;
 	background-color: #ffffff;
 	border: 1px solid #9d9e9e;
 }
 
-.index .input_box input[type="submit"]
+.input_box input[type="submit"]
 {
 	color: #ffffff;
 	background-color: #27ae60;
 	border-color: #2d6c48;
 }
 
-.index .input_box.register input[type="submit"]
+.input_box.register input[type="submit"]
 {
 	float: right;
 }
 
-.index .input_box input[type="submit"]:hover
+ .input_box input[type="submit"]:hover
 {
 	background-color: #37be70;
 }
 
-.index .input_box input[type="checkbox"]
+.input_box input[type="checkbox"]
 {
 	margin: 5px;
 }
 
-.index .input_box .wrong
+ .input_box .wrong
 {
 	border: 1px solid #f00000 !important;
 }
-.index .register_button
+ .register_button
 {
 	font-family: inherit;
 	font-size: 2.2em;
