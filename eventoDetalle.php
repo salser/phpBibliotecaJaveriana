@@ -9,13 +9,14 @@ if(isset($_GET['id']) && isset($_GET['email']) && isset($_GET['idU'])){
 	sendMail($_GET['email'], "Biblioteca", "Seregistro correctamente en el evento", "Seregistro correctamente en el evento");
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-	// TODO acabar actualización salas
-	if(isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['lugar'])  ){
-		if(isset($_POST['inicioChange']) && isset($_POST['finChange']) && isset($_POST['inicio']) && isset($_POST['fin'])){
-			$nombre = $_POST['nombre'];
+	$nombre = $_POST['nombre'];
 			$lugar = $_POST['lugar'];
 			$fInicio = $_POST['inicio'];
 			$fFin = $_POST['fin'];
+	// TODO acabar actualización salas
+	if(isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['lugar'])  ){
+		if(isset($_POST['inicioChange']) && isset($_POST['finChange']) && isset($_POST['inicio']) && isset($_POST['fin'])){
+			
 			dbquery("UPDATE eventos SET nombre='".$nombre."', lugar='".$lugar."',fechaInicio='".$fInicio."',fechaFin='".$fFin."' WHERE id=".$_POST['id']);
 		} else if (isset($_POST['inicioChange']) && !isset($_POST['finChange']) && isset($_POST['inicio'])) {
 			dbquery("UPDATE eventos SET nombre='".$nombre."', lugar='".$lugar."',fechaInicio='".$fInicio."'WHERE id=".$_POST['id']);
@@ -105,7 +106,7 @@ include("inc/templates/subheader.php");
 						<?php
 							 } else {
 						?>
-								<form action="POST">
+								<form method="POST">
 									<input type="hidden" name="id" id="id" value="<?php echo $evento['id'] ?>">
 									<label for="nombre" >Nombre</label>
 							 		<br>
