@@ -38,7 +38,7 @@ if (isset($_SESSION['UBER_USER_E']) && isset($_SESSION['UBER_USER_H']))
 	$userE = $_SESSION['UBER_USER_E'];
 	$userH = $_SESSION['UBER_USER_H'];
 
-	$usersql = dbquery("SELECT users.id, rank, username FROM users WHERE username = '" . $userE . "' AND password = '" . $userH . "' LIMIT 1");
+	$usersql = dbquery("SELECT * FROM users WHERE username = '" . $userE . "' AND password = '" . $userH . "' LIMIT 1");
 	$myrow = mysqli_fetch_assoc($usersql);
 	if (mysqli_num_rows($usersql) > 0)
 	{

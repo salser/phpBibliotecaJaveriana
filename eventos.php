@@ -31,6 +31,7 @@ $eventos_query = dbquery("SELECT * FROM eventos ORDER BY id");
 								<th>Lugar</th>
 								<th>Fecha y Hora inicio</th>
 								<th>Fecha y Hora Fin</th>
+								<th>Nombre</th>
 								<th>Acciones</th>
 							</tr>
 							<?php
@@ -49,12 +50,15 @@ $eventos_query = dbquery("SELECT * FROM eventos ORDER BY id");
 								<td>
 									<strong><?=$evento["fechaFin"];?></strong>
 								</td>
+								<td>
+									<strong><?=$evento["nombre"];?></strong>
+								</td>
 								<th>
 									<form>
-										<a class="btn" href="<?php echo 'localhost/eventoDetalle.php?id='.$evento['id'] ?>">Detalle</a>
+										<a class="btn" href="<?php echo 'eventoDetalle.php?id='.$evento['id'] ?>">Detalle</a>
 										<?php 
 											if ($myrow["rank"] == "2") {
-												echo '<a class="btn" href="localhost/eventoDetalle.php?id='.$evento['id'].'">Eliminar</a>';
+												echo '<a class="btn" href="eventoDetalle.php?id='.$evento['id'].'&eliminar=true">Eliminar</a>';
 											}
 										  ?>
 										

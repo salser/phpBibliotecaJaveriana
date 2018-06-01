@@ -522,3 +522,6 @@ tr:nth-child(even) {
 a.btn{
 	text-decoration: none;
 }
+label {
+	font-weight: bold;
+}
