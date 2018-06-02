@@ -2,6 +2,7 @@
 require 'phpmailer/vendor/autoload.php';
 function sendMail($email, $sender, $subject, $body)
 {
+  return;
   $mail = new PHPMailer;
   //$mail->SMTPDebug = 3;
 

@@ -116,6 +116,47 @@ $libros_solicitudes_query = dbquery("SELECT libros_solicitudes.id, username, tit
 					</div>
 				</div>
 			</section>
+
+			<section class="info_box">
+				<div class="info_title orange">Agregar libros</div>
+
+				<div class="article_preview">
+					<div class="info_text">
+
+							<form action="agregarLibro.php" method="post" enctype="multipart/form-data">
+								Titulo
+	  						<input type="text" name="titulo" value="">
+								<br>
+								Autor
+	  						<input type="text" name="autor" value="">
+								<br>
+								Edicion
+	  						<input type="text" name="edicion" value="">
+								<br>
+								Editorial
+	  						<input type="text" name="editorial" value="">
+								<br>
+								Páginas
+	  						<input type="text" name="paginas" value="">
+								<br>
+								ISBN
+	  						<input type="text" name="isbn" value="">
+								<br>
+								Copias
+	  						<input type="text" name="copias" value="">
+								<br>
+								<br>
+								Imagen
+								<input type="file" name="fileToUpload" id="fileToUpload">
+								<br>
+								<br>
+
+								<input type="submit" value="Aceptar">
+							</form>
+
+					</div>
+				</div>
+			</section>
 			<?php } ?>
 
 		</section>
