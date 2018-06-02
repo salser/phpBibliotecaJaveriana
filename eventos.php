@@ -58,7 +58,7 @@ $eventos_query = dbquery("SELECT * FROM eventos ORDER BY id");
 										<a class="btn" href="<?php echo 'eventoDetalle.php?id='.$evento['id'] ?>">Detalle</a>
 										<?php 
 											if ($myrow["rank"] == "2") {
-												echo '<a class="btn" href="eventoDetalle.php?id='.$evento['id'].'&eliminar=true">Eliminar</a>';
+												echo '<a class="btn" href="/denegarEvento.php?id='.$evento['id'].'">Eliminar</a>';
 											}
 										  ?>
 										
@@ -69,17 +69,17 @@ $eventos_query = dbquery("SELECT * FROM eventos ORDER BY id");
 						</table>
 						<?php 
 							if ($myrow["rank"] == "2") {
-								echo '<a class="btn" href="eventoDetalle.php?id='.$evento['id'].'&eliminar=true">Agregar</a>';
+							
 								?>
-								<form>
-									<form action="POST">
+								
+								<form action="agregarEvento.php" method="POST">
 									<label for="nombre" >Nombre</label>
 							 		<br>
 									<input type="text" name="nombre" id="nombre">
 									<br>
 									<label for="lugar" >Lugar</label>
 									<br>
-									<input type="text" name="lugar" id="lugar" >">
+									<input type="text" name="lugar" id="lugar" >
 									<br>
 									<label for="inicio">Fecha Inicio</label>
 									<br>
