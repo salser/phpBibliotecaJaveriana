@@ -6,7 +6,32 @@ $page_title = "Biblioteca - Equipos";
 
 include("inc/templates/subheader.php");
 
-$equipos_query = dbquery("SELECT * FROM equipos ORDER BY id");
+$equipos_query = dbquery("SELECT * FROM equipos");
+
+$fields = [];
+foreach ($equipos_query->fetch_assoc() as $key => $value) {
+	$fields[] = $key;
+}
+$search = "";
+if (!isset($_GET["buscar"])) {
+	foreach ($_GET as $key => $value) {
+		if (strlen($value) != 0) {
+			if ($search != "") {
+				$search .= " AND " . $key . " LIKE '%" . $value . "%' ";
+			} else {
+				$search .= " " . $key . " LIKE '%" . $value . "%' ";
+			}
+		}
+	}
+} else {
+	$search = " nombre " . " LIKE '%" . $_GET["buscar"] . "%' ";
+}
+
+if ($search != "") {
+	$search = " WHERE " . $search;
+}
+
+$equipos_query = dbquery("SELECT * FROM equipos " . $search);
 
 ?>
 <body>
@@ -26,9 +51,27 @@ $equipos_query = dbquery("SELECT * FROM equipos ORDER BY id");
 							<div class="title clear">
 								Buscar equipos:
 							</div>
-							<form action="resultados.php" method="get">
+							<form method="get">
 								<input placeholder="Buscar" name="buscar" type="text" style="float: left;">
 								<div style="float: left;">&nbsp;&nbsp;</div>
+								<input type="submit" value="Buscar" style="float: left;">
+							</form>
+
+							<div class="title clear">
+								Búsqueda avanzada:
+							</div>
+							<form method="get">
+								<?php
+								foreach ($fields as $field) {
+									if ($field != "id") {
+										echo $field;
+										echo '<br>';
+										echo '<input placeholder="'. $field .'" name="'. $field .'" type="text"><br>';
+									}
+								}
+								 ?>
+
+								<br>
 								<input type="submit" value="Buscar" style="float: left;">
 							</form>
 							<div class="clear"></div>
@@ -61,19 +104,44 @@ $equipos_query = dbquery("SELECT * FROM equipos ORDER BY id");
 						<div class="clear"></div>
 					</div>
 
-
 						<br>
-						<?php
-							if ($myrow["rank"] == 2) {
-								echo "hello admin";
-							}
-						 ?>
-							<a href="./insertar.php">Insertar equipos</a>
+							<!--<a href="./insertar.php">Insertar equipos</a>-->
 						<div class="clear"></div>
 
 				</div>
 
 			</section>
+
+			<?php
+				if ($myrow["rank"] == 2) {
+			 ?>
+
+			<section class="info_box">
+				<div class="info_title orange">Agregar equipos</div>
+
+				<div class="article_preview">
+					<div class="info_text">
+
+							<form action="agregarEquipo.php" method="post" enctype="multipart/form-data">
+								Nombre
+	  						<input type="text" name="nombre" value="">
+								<br>
+								Disponibles
+	  						<input type="text" name="disponibles" value="">
+								<br>
+								<br>
+								Imagen
+								<input type="file" name="fileToUpload" id="fileToUpload">
+								<br>
+								<br>
+
+								<input type="submit" value="Aceptar">
+							</form>
+
+					</div>
+				</div>
+			</section>
+			<?php } ?>
 
 		</section>
 	</section>

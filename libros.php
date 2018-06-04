@@ -6,7 +6,32 @@ $page_title = "Biblioteca - Libros";
 
 include("inc/templates/subheader.php");
 
-$libros_query = dbquery("SELECT * FROM libros ORDER BY id");
+$libros_query = dbquery("SELECT * FROM libros");
+
+$fields = [];
+foreach ($libros_query->fetch_assoc() as $key => $value) {
+	$fields[] = $key;
+}
+$search = "";
+if (!isset($_GET["buscar"])) {
+	foreach ($_GET as $key => $value) {
+		if (strlen($value) != 0) {
+			if ($search != "") {
+				$search .= " AND " . $key . " LIKE '%" . $value . "%' ";
+			} else {
+				$search .= " " . $key . " LIKE '%" . $value . "%' ";
+			}
+		}
+	}
+} else {
+	$search = " titulo " . " LIKE '%" . $_GET["buscar"] . "%' ";
+}
+
+if ($search != "") {
+	$search = " WHERE " . $search;
+}
+
+$libros_query = dbquery("SELECT * FROM libros " . $search);
 
 $libros_solicitudes_query = dbquery("SELECT libros_solicitudes.id, username, titulo FROM libros_solicitudes JOIN libros ON (libroid = libros.id) JOIN users ON (users.id = userid) WHERE aprobado = '0'");
 
@@ -38,6 +63,25 @@ $libros_solicitudes_query = dbquery("SELECT libros_solicitudes.id, username, tit
 							</form>
 							<div class="clear"></div>
 						</section>
+
+						<div class="title clear">
+							Búsqueda avanzada:
+						</div>
+						<form method="get">
+							<?php
+							foreach ($fields as $field) {
+								if ($field != "id") {
+									echo $field;
+									echo '<br>';
+									echo '<input placeholder="'. $field .'" name="'. $field .'" type="text"><br>';
+								}
+							}
+							 ?>
+
+							<br>
+							<input type="submit" value="Buscar" style="float: left;">
+						</form>
+						<div class="clear"></div>
 
 						<p>Libros disponibles en la biblioteca</p>
 
